@@ -32,3 +32,8 @@
         height: 569px;
     }
 }
+
+#bday-img {
+    max-width: 829px;
+    width: 100%;
+}
