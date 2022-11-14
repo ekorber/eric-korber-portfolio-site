@@ -4,6 +4,8 @@
     max-height: 569px;
     height: 230px;
     object-fit: scale-down;
+    margin-top: 10px;
+    margin-bottom: 25px;
 }
 
 @media (min-width: 576px) {
@@ -36,4 +38,5 @@
 #bday-img {
     max-width: 829px;
     width: 100%;
+    margin-bottom: 25px;
 }
