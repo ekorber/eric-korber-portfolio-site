@@ -1,0 +1,49 @@
+.video-link {
+    max-width: 100%;
+    width: 1011px;
+    max-height: 569px;
+    height: 230px;
+    object-fit: scale-down;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+@media (min-width: 576px) {
+    .video-link {
+        height: 290px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .video-link {
+        height: 392px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .video-link {
+        height: 257px;
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .video-link {
+        height: 307px;
+    }
+}
+
+/* XX-Large devices (x-large desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    .video-link {
+        height: 357px;
+    }
+}
+
+#bday-img {
+    max-width: 829px;
+    width: 100%;
+    margin-bottom: 25px;
+}
