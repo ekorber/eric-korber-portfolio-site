@@ -31,8 +31,8 @@ const greenMat = new THREE.MeshStandardMaterial( { color: "green" } );
 const purpleCube = new THREE.Mesh( cubeGeometry, purpleMat );
 const greenCube = new THREE.Mesh( cubeGeometry, greenMat );
 
-purpleCube.position.set(-6, 2, 0);
-greenCube.position.set(6, -2, 0);
+purpleCube.position.set((-0.0035 * window.innerWidth), 2, 0);
+greenCube.position.set((0.0035 * window.innerWidth), -2, 0);
 
 scene.add( purpleCube );
 scene.add( greenCube );
@@ -65,3 +65,14 @@ function onScroll() {
 }
 
 document.body.onscroll = onScroll
+
+//On Window Resize event
+window.addEventListener( 'resize', function() {
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    //Place cubes in appropriate positions
+    purpleCube.position.x = (-0.0035 * window.innerWidth);
+    greenCube.position.x = (0.0035 * window.innerWidth);
+});
