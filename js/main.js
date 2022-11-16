@@ -29,8 +29,8 @@ const cubeMat = new THREE.MeshStandardMaterial( { color: "#4d4dff" } );
 const cubeLeft = new THREE.Mesh( cubeGeometry, cubeMat );
 const cubeRight = new THREE.Mesh( cubeGeometry, cubeMat );
 
-cubeLeft.position.set((-0.0035 * window.innerWidth), 2, 0);
-cubeRight.position.set((0.0035 * window.innerWidth), -2, 0);
+cubeLeft.position.set((-0.0035 * window.innerWidth), 2.2, 0);
+cubeRight.position.set((0.0035 * window.innerWidth), -3, 0);
 
 scene.add( cubeLeft );
 scene.add( cubeRight );
@@ -51,15 +51,16 @@ animate();
 
 function onScroll() {
 
-    const t = document.body.getBoundingClientRect().top;
+    const top = document.body.getBoundingClientRect().top;
+    const totalBodyHeight = document.body.getBoundingClientRect().bottom - top;
 
     cubeLeft.rotation.x += 0.06;
     cubeLeft.rotation.y += 0.06;
-    cubeLeft.position.y = (t * 0.0025) + 2;
+    cubeLeft.position.y = lerp(2.2, -4.7, (-top / totalBodyHeight));
 
     cubeRight.rotation.x += 0.06;
     cubeRight.rotation.y += 0.06;
-    cubeRight.position.y = (t * -0.0025) - 2;
+    cubeRight.position.y = lerp(-3, 4.85, (-top / totalBodyHeight));
 }
 
 document.body.onscroll = onScroll
@@ -74,3 +75,13 @@ window.addEventListener( 'resize', function() {
     cubeLeft.position.x = (-0.0035 * window.innerWidth);
     cubeRight.position.x = (0.0035 * window.innerWidth);
 });
+
+function lerp(a, b, t) {
+    if (t < 0){
+        t = 0;
+    }
+    if (t > 1) {
+        t = 1;
+    }
+    return ((a * (1 - t)) + (b * t));
+}
