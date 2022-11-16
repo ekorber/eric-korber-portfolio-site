@@ -11,7 +11,6 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
 //Custom scene setup
-scene.background = new THREE.Color( 'lightgrey' );
 camera.position.z = 5;
 
 //Create ambient light
@@ -25,26 +24,25 @@ scene.add(pointLight);
 
 //Create cube primitives
 const cubeGeometry = new THREE.BoxGeometry( 1, 1, 1 );
-const purpleMat = new THREE.MeshStandardMaterial( { color: "darkmagenta" } );
-const greenMat = new THREE.MeshStandardMaterial( { color: "green" } );
+const cubeMat = new THREE.MeshStandardMaterial( { color: "#4d4dff" } );
 
-const purpleCube = new THREE.Mesh( cubeGeometry, purpleMat );
-const greenCube = new THREE.Mesh( cubeGeometry, greenMat );
+const cubeLeft = new THREE.Mesh( cubeGeometry, cubeMat );
+const cubeRight = new THREE.Mesh( cubeGeometry, cubeMat );
 
-purpleCube.position.set((-0.0035 * window.innerWidth), 2, 0);
-greenCube.position.set((0.0035 * window.innerWidth), -2, 0);
+cubeLeft.position.set((-0.0035 * window.innerWidth), 2, 0);
+cubeRight.position.set((0.0035 * window.innerWidth), -2, 0);
 
-scene.add( purpleCube );
-scene.add( greenCube );
+scene.add( cubeLeft );
+scene.add( cubeRight );
 
 function animate() {
     requestAnimationFrame( animate );
 
-    purpleCube.rotation.x += 0.01;
-    purpleCube.rotation.y += 0.01;
+    cubeLeft.rotation.x += 0.01;
+    cubeLeft.rotation.y += 0.01;
 
-    greenCube.rotation.x += 0.01;
-    greenCube.rotation.y += 0.01;
+    cubeRight.rotation.x += 0.01;
+    cubeRight.rotation.y += 0.01;
 
     renderer.render( scene, camera );
 };
@@ -55,13 +53,13 @@ function onScroll() {
 
     const t = document.body.getBoundingClientRect().top;
 
-    purpleCube.rotation.x += 0.05;
-    purpleCube.rotation.y += 0.05;
-    purpleCube.position.y = (t * 0.0025) + 2;
+    cubeLeft.rotation.x += 0.06;
+    cubeLeft.rotation.y += 0.06;
+    cubeLeft.position.y = (t * 0.0025) + 2;
 
-    greenCube.rotation.x += 0.05;
-    greenCube.rotation.y += 0.05;
-    greenCube.position.y = (t * -0.0025) - 2;
+    cubeRight.rotation.x += 0.06;
+    cubeRight.rotation.y += 0.06;
+    cubeRight.position.y = (t * -0.0025) - 2;
 }
 
 document.body.onscroll = onScroll
@@ -73,6 +71,6 @@ window.addEventListener( 'resize', function() {
     camera.updateProjectionMatrix();
 
     //Place cubes in appropriate positions
-    purpleCube.position.x = (-0.0035 * window.innerWidth);
-    greenCube.position.x = (0.0035 * window.innerWidth);
+    cubeLeft.position.x = (-0.0035 * window.innerWidth);
+    cubeRight.position.x = (0.0035 * window.innerWidth);
 });
